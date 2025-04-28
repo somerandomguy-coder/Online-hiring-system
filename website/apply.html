@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Work with us</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Open position</h2>
+    <h3>filter:</h3>
+    <div class="filter_container">
+      <select onchange="query();" name="department" id="department">
+        <option>Choose a department:</option>
+        <option value="Sale">Sale</option>
+        <option value="Finance">Finance</option>
+        <option value="HumanResource">Human Resource</option>
+        <option value="Legal">Legal</option>
+      </select>
+      <select onchange="query();" name="worktype" id="worktype">
+        <option>Choose a worktype</option>
+        <option value="OnSite">On Site</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Remote">Remote</option>
+      </select>
+    </div>
+  </div>
+</body>
+</html>
