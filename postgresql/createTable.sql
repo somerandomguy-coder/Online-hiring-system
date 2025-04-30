@@ -1,11 +1,12 @@
-DROP TABLE IF EXISTS candidate;
 DROP TABLE IF EXISTS status;
-DROP TABLE IF EXISTS HRMember;
 DROP TABLE IF EXISTS availability;
 DROP TABLE IF EXISTS interview;
 DROP TABLE IF EXISTS transaction;
-DROP TABLE IF EXISTS criteria;
 DROP TABLE IF EXISTS report;
+DROP TABLE IF EXISTS criteria;
+DROP TABLE IF EXISTS jobpost;
+DROP TABLE IF EXISTS candidate;
+DROP TABLE IF EXISTS HRMember;
 
 CREATE TABLE candidate (
     ID          VARCHAR(8)      NOT NULL PRIMARY KEY,
@@ -77,4 +78,15 @@ CREATE TABLE report(
     candidateID VARCHAR(8)  NOT NULL REFERENCES     candidate(ID),
     criteriaID  VARCHAR(8)  NOT NULL REFERENCES     criteria(ID),
     content     TEXT        NOT NULL
-)
+);
+
+CREATE TABLE jobpost(
+    ID          VARCHAR(8)  NOT NULL PRIMARY KEY,
+    title       VARCHAR(20) NOT NULL,
+    department  VARCHAR(8)  NOT NULL,
+    worktype    VARCHAR(8)  NOT NULL,
+    content     TEXT        NOT NULL,
+    timestamp   TIMESTAMP   NOT NULL
+);
+
+

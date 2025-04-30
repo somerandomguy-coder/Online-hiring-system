@@ -15,6 +15,23 @@ def database_query(file):
     cursor.close()
     conn.close()
 
+def database_query_script(script) -> list:
+    import psycopg2 
+    conn = psycopg2.connect(database="postgres",
+                        host="localhost",
+                        user="postgres",
+                        password="1.6180339",
+                        port="9999")
+    cursor = conn.cursor()
+    cursor.execute(script)
+    output = cursor.fetchall()
+    print(cursor.fetchall())
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return output
+    
+
 def database_insert(table, *args):
     query = f"INSERT INTO {table} VALUES {args};"
     
@@ -29,6 +46,23 @@ def database_insert(table, *args):
     conn.commit()
     cursor.close()
     conn.close()
+
+def database_get_columns(table):
+    query = f"SELECT * FROM {table} LIMIT 0" 
+    import psycopg2 
+    conn = psycopg2.connect(database="postgres",
+                        host="localhost",
+                        user="postgres",
+                        password="1.6180339",
+                        port="9999")
+    cursor = conn.cursor()
+    cursor.execute(query)
+    output = [des[0] for des in cursor.description]
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return output
+
 
 def init_table(file):
     import psycopg2 
@@ -46,5 +80,4 @@ def init_table(file):
     conn.close()
 
 
-init_table('createTable.sql')
-init_table('insertTable.sql')
+
