@@ -1,6 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 from markupsafe import escape
-import database as db
+from app import database as db
 from app.api import filter_job
 
 app = Flask(__name__)
@@ -8,18 +8,19 @@ app = Flask(__name__)
 app.register_blueprint(filter_job.filter_job_bp)
 
 @app.route("/")
-@app.route("/hello")
-@app.route("/hello/<name>")
-def hello(name=None):
-    return render_template("hello.html", name=name)
+def index():
+    return render_template("base.html")
 
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     if request.method == "GET":
-        return "<h1>You GET this page</h1>"
+        return render_template("login.html")
     elif request.method == "POST":
-        return "<h1>You POST this page</h1>"
+        name = request.form.get("username")
+        passw = request.form.get("password")
+        if name != "" and passw != "":
+            return "<h1>Succesfully posted</h1>"
+        else: 
+            return "<h1>Some information missing</h1>"
 
-
-print(app.url_map)

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-import database as db
+from app.api import database as db
 
 filter_job_bp = Blueprint("filter_job", __name__)
 
