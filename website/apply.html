@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Work with us</title>
   <link rel="stylesheet" href="style.css">
+  <script src="scripts/filter_job.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -14,16 +15,19 @@
         <option>Choose a department:</option>
         <option value="Sale">Sale</option>
         <option value="Finance">Finance</option>
-        <option value="HumanResource">Human Resource</option>
+        <option value="Human Resource">Human Resource</option>
         <option value="Legal">Legal</option>
+        <option value="Engineer">Engineer</option>
       </select>
       <select onchange="query();" name="worktype" id="worktype">
         <option>Choose a worktype</option>
-        <option value="OnSite">On Site</option>
+        <option value="On Site">On Site</option>
         <option value="Hybrid">Hybrid</option>
         <option value="Remote">Remote</option>
       </select>
-    </div>
+      <button style="color:black">Filter</button>
+    </div>  
+  <div id="jobPostList"></div>
   </div>
 </body>
 </html>
