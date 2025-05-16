@@ -12,7 +12,7 @@
     <h3>filter:</h3>
     <div class="filter_container">
       <select onchange="query();" name="department" id="department">
-        <option>Choose a department:</option>
+        <option value="All">All</option>
         <option value="Sale">Sale</option>
         <option value="Finance">Finance</option>
         <option value="Human Resource">Human Resource</option>
@@ -20,14 +20,27 @@
         <option value="Engineer">Engineer</option>
       </select>
       <select onchange="query();" name="worktype" id="worktype">
-        <option>Choose a worktype</option>
+        <option value="All">All</option>
         <option value="On Site">On Site</option>
         <option value="Hybrid">Hybrid</option>
         <option value="Remote">Remote</option>
       </select>
-      <button style="color:black">Filter</button>
+      <button onclick="query();" style="all:unset; color:black; padding: 4px; border: 1px solid black; border-radius:4px;">Filter</button>
     </div>  
   <div id="jobPostList"></div>
   </div>
+  <form class="container" id ="form">
+    <label for="name">Name</label>
+    <input type="name" name="name" id="name"></input>
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email"></input>
+    <label for="phoneNumber">Phone Number</label>
+    <input type="number" name="phoneNumber" id="phoneNumber"></input>
+    <label for="resume">Resume</label>
+    <input type="text" name="resume" id="resume"></input>
+    <label for="state">State</label>
+    <input type="text" name="state" id="state"></input>
+    <input type="submit" value="Submit"/>
+  </form>
 </body>
 </html>
