@@ -1,7 +1,7 @@
 let data;
 (async function getJobPost() {
-    url = "http://localhost:5000/filter_job/"
     try {
+	let url = "http://localhost:5000/filter_job/";
 	const response = await fetch(url);
 	if (!response.ok) {
 	    throw new Error(`response status: ${response.status}`);
@@ -109,8 +109,34 @@ let query = () => {
 };
 form.style.display="none";
 
+async function postData(){
+    let formData = new FormData(form)
+    let url = "http://localhost:5000/upload"
+    const response = await fetch(url, {
+	    method: "POST",
+	    body: formData 
+    })
+    
+    const response2 = response.clone()
+    try {
+	json1 = await response.json()
+	console.log(json1)
+	submitStatus.textContent=JSON.stringify(json1.error,null);
+    } catch(e) {
+	const json2 = await response2.json()
+	console.log(json2)
+	submitStatus.textContent=json2
+	console.error(e)
+    }
+}
+
+
 const handleSubmit = (e) => {
+    let formData = new FormData(form)
+    let url = "http://localhost:5000/upload"
     e.preventDefault();
     form.style.display="none";
+    postData();
 }
+
 form.addEventListener("submit", handleSubmit)

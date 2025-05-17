@@ -2,12 +2,14 @@ from flask import Flask, request, render_template, url_for
 from flask_cors import CORS
 from markupsafe import escape
 from app import database as db
-from app.api import filter_job
+from app.api import filter_job, post_application
 
 app = Flask(__name__)
-CORS(app, resource={"/filter_job/": {"origins": ["http://happyhiring.com:8080", "http://localhost:8080"]}})
+CORS(app, resource={r"/api/*": {"origins": ["http://happyhiring.com:8080", "http://localhost:8080"]}})
 
 app.register_blueprint(filter_job.filter_job_bp)
+app.register_blueprint(post_application.post_application_bp)
+
 
 @app.route("/")
 def index():
