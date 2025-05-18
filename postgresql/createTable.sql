@@ -9,31 +9,31 @@ DROP TABLE IF EXISTS candidate;
 DROP TABLE IF EXISTS HRMember;
 
 CREATE TABLE candidate (
-    ID          VARCHAR(8)      NOT NULL PRIMARY KEY,
+    ID          SERIAL          PRIMARY KEY,
     firstName   VARCHAR(255)    NOT NULL,
     lastName    VARCHAR(255),
     email       VARCHAR(255),
+    phoneNumber TEXT,
     state       VARCHAR(255),
     suburb      VARCHAR(255),
     postcode    VARCHAR(255),
-    resume      TEXT NOT NULL,
-    coverLetter TEXT,
+    resumePath  VARCHAR(255)    NOT NULL,
     jobPosition VARCHAR(20),
-    sendAt      DATE
+    sendAt      TIMESTAMP       NOT NULL
 );
 
 CREATE TABLE status (
-    ID              VARCHAR(8) NOT NULL REFERENCES candidate(ID),
+    ID              INTEGER     NOT NULL REFERENCES candidate(ID),
     password        VARCHAR(10),
     screeningRound  BOOLEAN,
     scheduling      BOOLEAN,
     interviewRound  BOOLEAN,
     acceptOffer     BOOLEAN,
-    lastUpdated     DATE
+    lastUpdated     TIMESTAMP   NOT NULL
 );
 
 CREATE TABLE HRmember (
-    ID          VARCHAR(8)      NOT NULL PRIMARY KEY,
+    ID          SERIAL          PRIMARY KEY,
     password    VARCHAR(8),
     firstName   VARCHAR(255)    NOT NULL,
     lastName    VARCHAR(255),
@@ -41,25 +41,25 @@ CREATE TABLE HRmember (
 );
 
 CREATE TABLE availability(
-    availabilityID  VARCHAR(8)  NOT NULL PRIMARY KEY,
-    HRID            VARCHAR(8)  NOT NULL REFERENCES HRmember(ID),
+    availabilityID  SERIAL      PRIMARY KEY,
+    HRID            INTEGER     NOT NULL REFERENCES HRmember(ID),
     date            DATE,
     startTime       TIME,
     endTime         TIME
 );
 
 CREATE TABLE interview(
-    interviewID     VARCHAR(8) NOT NULL PRIMARY KEY,
-    HRID            VARCHAR(8) NOT NULL REFERENCES HRmember(ID),
-    candidateID     VARCHAR(8) NOT NULL REFERENCES candidate(ID),
+    interviewID     SERIAL      PRIMARY KEY,
+    HRID            INTEGER     NOT NULL REFERENCES HRmember(ID),
+    candidateID     INTEGER     NOT NULL REFERENCES candidate(ID),
     date            DATE,
     startTime       TIME,
     endTime         TIME
 );
 
 CREATE TABLE transaction(
-    transID     VARCHAR(8)  NOT NULL PRIMARY KEY,
-    memberID    VARCHAR(8)  NOT NULL REFERENCES HRmember(ID),
+    transID     SERIAL      PRIMARY KEY,
+    memberID    INTEGER     NOT NULL REFERENCES HRmember(ID),
     category    VARCHAR(20),
     campaign    VARCHAR(20),
     description TEXT,
@@ -68,20 +68,20 @@ CREATE TABLE transaction(
 );
 
 CREATE TABLE criteria(
-    ID          VARCHAR(8)  NOT NULL PRIMARY KEY, 
+    ID          SERIAL      PRIMARY KEY, 
     content     TEXT        NOT NULL
 ); 
 
 CREATE TABLE report( 
-    repostID    VARCHAR(8)  NOT NULL PRIMARY KEY,
-    memberID    VARCHAR(8)  NOT NULL REFERENCES     HRmember(ID),
-    candidateID VARCHAR(8)  NOT NULL REFERENCES     candidate(ID),
-    criteriaID  VARCHAR(8)  NOT NULL REFERENCES     criteria(ID),
+    reportID    SERIAL      PRIMARY KEY,
+    memberID    INTEGER     NOT NULL REFERENCES     HRmember(ID),
+    candidateID INTEGER     NOT NULL REFERENCES     candidate(ID),
+    criteriaID  INTEGER     NOT NULL REFERENCES     criteria(ID),
     content     TEXT        NOT NULL
 );
 
 CREATE TABLE jobpost(
-    ID          VARCHAR(8)  NOT NULL PRIMARY KEY,
+    ID          SERIAL      PRIMARY KEY,
     title       VARCHAR(20) NOT NULL,
     department  VARCHAR(8)  NOT NULL,
     worktype    VARCHAR(8)  NOT NULL,

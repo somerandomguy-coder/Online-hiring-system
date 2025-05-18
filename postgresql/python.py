@@ -48,3 +48,4 @@ def init_table(file):
 
 init_table('createTable.sql')
 init_table('insertTable.sql')
+print("hello")

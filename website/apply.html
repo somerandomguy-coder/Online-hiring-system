@@ -30,18 +30,26 @@
   <div id="jobPostList"></div>
   </div>
   <div id="submitStatus" class="container"></div>
-  <form class="container" id ="form">
-    <label for="name">Name</label>
-    <input type="name" name="name" id="name"></input>
+  <form class="container" id="form" enctype="multipart/form-data">
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" required>
+    <label for="lastName">Last Name</label>
+    <input type="text" name="lastName"> 
     <label for="email">Email</label>
-    <input type="text" name="email" id="email"></input>
+    <input type="text" name="email">
     <label for="phoneNumber">Phone Number</label>
-    <input type="number" name="phoneNumber" id="phoneNumber"></input>
+    <input type="text" name="phoneNumber">
+    <label for="position">Position</label>
+    <input type="text" name="position">
     <label for="resume">Resume</label>
-    <input type="text" name="resume" id="resume"></input>
+    <input type="file" name="resume" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf,.txt" required>
+    <label for="suburb">Suburb</label>
+    <input type="text" name="suburb">
     <label for="state">State</label>
-    <input type="text" name="state" id="state"></input>
-    <input type="submit" value="Submit"/>
+    <input type="text" name="state">
+    <label for="postcode">Postcode</label>
+    <input type="text" name="postcode">
+    <input type="submit" value="Submit">
   </form>
 </body>
 </html>
