@@ -86,6 +86,7 @@ CREATE TABLE jobpost(
     department  VARCHAR(8)  NOT NULL,
     worktype    VARCHAR(8)  NOT NULL,
     content     TEXT        NOT NULL,
+    salary      TEXT        NOT NULL,
     timestamp   TIMESTAMP   NOT NULL
 );
 

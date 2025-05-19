@@ -7,5 +7,6 @@ INSERT INTO status
     VALUES (1,'password', TRUE, TRUE, TRUE, TRUE, NOW());
 
 INSERT INTO jobpost
-    VALUES ('0001','Saleperson' ,'Sale', 'On Site', 'We''re hiring saleman, come in pls', '2025-4-29 11:54:00'), 
-    ('0002','Software Engineer' ,'Engineer', 'Remote', 'We''re hiring engineer, come in pls', '2025-4-29 11:55:00')
+    VALUES (DEFAULT,'Saleperson' ,'Sale', 'On Site', 'We''re hiring saleman, come in pls','50K','2025-4-29 11:54:00'), 
+    (DEFAULT,'Junior Engineer' ,'Engineer', 'Remote', 'We''re hiring engineer, come in pls','100K', '2025-4-29 11:55:00'),
+    (DEFAULT,'Staff Engineer' ,'Engineer', 'Remote', 'We''re hiring engineer, come in pls','200K', '2025-5-29 11:55:00')

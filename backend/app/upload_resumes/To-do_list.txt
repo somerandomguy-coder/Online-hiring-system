@@ -1,0 +1,22 @@
+Finished:
+- Learn nginx (2 videos)
+- relearn javascript (on 18/4)
+- move to lazy.nvim
+- config nvim
+- quickly learn lua
+- starting poetry
+
+
+To-Do List: 
+- try: 
+	llama 3.2 3B
+	Genma 2 2B
+	granite 2B instruct
+	smolLM2
+	Qwen 2.5 3B
+
+- learn flask library
+- learn redis-py
+- learn javascript intermediate
+- learn kotlin
+

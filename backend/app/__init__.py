@@ -2,13 +2,10 @@ from flask import Flask, request, render_template, url_for
 from flask_cors import CORS
 from markupsafe import escape
 from app import database as db
-from app.api import filter_job, post_application
 
 app = Flask(__name__)
 CORS(app, resource={r"/api/*": {"origins": ["http://happyhiring.com:8080", "http://localhost:8080"]}})
 
-app.register_blueprint(filter_job.filter_job_bp)
-app.register_blueprint(post_application.post_application_bp)
 
 
 @app.route("/")
@@ -28,3 +25,6 @@ def login():
         else: 
             return "<h1>Some information missing</h1>"
 
+from app.api import filter_job, post_application
+app.register_blueprint(filter_job.filter_job_bp)
+app.register_blueprint(post_application.post_application_bp)
