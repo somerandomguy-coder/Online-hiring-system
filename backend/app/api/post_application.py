@@ -16,7 +16,8 @@ def post_application():
     phoneNumber = request.form["phoneNumber"]
     jobPosition = request.form["position"]
     resume = request.files["resume"]
-    filename = "resume" + str(random.randint(1, 999999))
+    file_extension = resume.filename[-3:]
+    filename = "resume" + str(random.randint(1, 999999)) + file_extension
     resumePath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     resume.save(resumePath)
     suburb = request.form["suburb"]
