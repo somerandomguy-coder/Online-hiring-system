@@ -6,7 +6,8 @@ import json
 from app import app
 from app.api import database as db
 post_application_bp= Blueprint("post_application", __name__)
-from app.services.processing_resume import processing_resume
+from app.services.processing_resume import processing_resume, relevant_score, unique_score
+
 @post_application_bp.route("/upload", methods=["POST"])
 def post_application():
     app.config["UPLOAD_FOLDER"] = "/home/namle/Documents/git-repos/Online-hiring-system/backend/app/upload_resumes/"
@@ -27,6 +28,10 @@ def post_application():
     
     db.database_action_script(script)
     
-    print(processing_resume(resumePath))
-
-    return jsonify({"msg": "success", "form": request.form, }), 200
+    text = processing_resume(resumePath)
+    rel_score, skill_matched = relevant_score(text)
+    model_path = "/home/namle/Documents/git-repos/Online-hiring-system/backend/app/ENVIRONMENT/vectorizer.pkl"
+    mean_path = "/home/namle/Documents/git-repos/Online-hiring-system/backend/app/ENVIRONMENT/means_resume.pkl"
+    uni_score = unique_score(text, model_path, mean_path)
+    print(rel_score, uni_score)
+    return jsonify({"msg": "success", "relevant_score": rel_score, "skill_matched": skill_matched, "unique_score": uni_score, }), 200

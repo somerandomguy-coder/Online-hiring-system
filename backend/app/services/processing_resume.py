@@ -1,4 +1,7 @@
 import PyPDF2
+import pickle
+from scipy.spatial import distance
+
 def processing_resume(file):
     result = ""
     if file[-3:] == "txt":
@@ -14,4 +17,28 @@ def processing_resume(file):
                 result += "\n"
     else:
         return "Please submit as txt or pdf file"
-    return result
+    return result.lower()
+
+
+def relevant_score(text):
+    skill_list = ["python", "poetry", "java", "lua", "llm"]
+    matched = 0
+    skill_matched = []
+    for skill in skill_list:
+        if skill in text:
+            matched += 1
+            skill_matched.append(skill)
+    score = (matched/len(skill_list))*10
+    return score, skill_matched
+
+def unique_score(text, model_path, mean_path):
+
+    vectorizer = pickle.load(open(model_path, "rb"))
+    mean = pickle.load(open(mean_path, "rb"))
+    
+    extracted_features = vectorizer.transform([text]).toarray()[0]
+
+    unique_score = distance.cosine(extracted_features, mean)
+
+    
+    return unique_score
