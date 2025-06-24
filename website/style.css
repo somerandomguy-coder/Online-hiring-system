@@ -34,8 +34,8 @@ nav {
 }
 
 .wife {
-	margin-top: 28vh;
-	margin-left: 25vw;
+	padding-top: 28vh;
+	padding-left: 25vw;
 	height: 30vh;
 	width: 50vw;
 	font-size: 5vw;
@@ -48,7 +48,7 @@ button {
 	background-color: inherit;
 	color: #FFFFFF;
 	position: relative;
-	margin-top: 18vh;
+	margin-top: 260px;
 	margin-left: 33vw;
 	width: 17vw;
 	height: 9vh;
@@ -59,14 +59,14 @@ button {
 
 
 .container {
-    margin-left: 25vw;
+    padding-left: 40px;
+    padding-top: 10px;
     display: flex;
     flex-direction:column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 50vw;
-    padding: 30px;
-    padding-top: 10px;
+    height: 200vh;
     border-style: solid;
     border-radius: 30px;
     border-color: darkblue;
@@ -81,4 +81,89 @@ button {
 
 .jobPost {
     flex: 1 1 0; 
+}
+
+.join_our_team {
+    color: white;
+    font: 5vw Montserrat, Monospace;
+}
+
+#our_team {
+    color: #33b8ff;
+}
+
+.apply_container {
+    margin-top:150px;
+    margin-left: 25vw;
+    width: 50vw;
+    height: 500vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.small_line {
+    color: white;
+    font-size:20px;
+}
+
+.career-button {
+	display:flex;
+	align-items: center;
+	gap: 5px;
+	justify-content: center;
+	background-color: #33b8ff;
+	color: white;
+	position: relative;
+	margin-top: 40px;
+	margin-left: 0px;
+	width: 100px;
+	height: 20px;
+	font-size: 18px;
+	border: 4px solid #33B8FF;
+	border-radius: 34px;
+    
+}
+
+.icon {
+	background-color: #E6E6E6;
+	width:18px;
+	height:18px;
+	border-radius: 18px;
+
+}
+
+.open_position {
+    font: 5vh Montserrat, Monospace;
+    font-weight:bold;
+    margin-top:30px;
+}
+
+select {
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-left: 5px;
+}
+
+
+.filter_container {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+
+#salary {
+    width: 80px;
+    
+}
+
+.inner_flexbox {
+    width: 100%;
+    display:flex;
+    margin-top: 20px;
+    justify-content:space-between;
+    padding-right:60px;
 }

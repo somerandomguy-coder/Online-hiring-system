@@ -81,13 +81,14 @@ CREATE TABLE report(
 );
 
 CREATE TABLE jobpost(
-    ID          SERIAL      PRIMARY KEY,
-    title       VARCHAR(20) NOT NULL,
-    department  VARCHAR(8)  NOT NULL,
-    worktype    VARCHAR(8)  NOT NULL,
-    content     TEXT        NOT NULL,
-    salary      TEXT        NOT NULL,
-    timestamp   TIMESTAMP   NOT NULL
+    ID          SERIAL          PRIMARY KEY,
+    title       VARCHAR(40)     NOT NULL,
+    address     VARCHAR(100)    NOT NULL,
+    department  VARCHAR(8)      NOT NULL,
+    worktype    VARCHAR(8)      NOT NULL,
+    content     TEXT            NOT NULL,
+    salary      TEXT            NOT NULL,
+    timestamp   TIMESTAMP       NOT NULL
 );
 
 
