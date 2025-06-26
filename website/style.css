@@ -61,12 +61,13 @@ button {
 .container {
     padding-left: 40px;
     padding-top: 10px;
+    padding-bottom: 166px;
     display: flex;
     flex-direction:column;
     justify-content: flex-start;
     align-items: flex-start;
     width: 50vw;
-    height: 200vh;
+    height: fit-content;
     border-style: solid;
     border-radius: 30px;
     border-color: darkblue;
@@ -166,4 +167,30 @@ select {
     margin-top: 20px;
     justify-content:space-between;
     padding-right:60px;
+}
+
+#jobPostList {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    padding-top: 82px;
+    padding-right: 60px;
+}
+
+.jobCard {
+    border-radius: 20px;
+    background-color: #D9D9D9;
+    width: 100%;
+    padding-left: 30px;
+    padding-top: 36px;
+    padding-bottom: 34px;
+}
+
+li {
+    list-style: none;
+}
+
+.jobCard > h2 {
+    font-size: xxx-large;
 }

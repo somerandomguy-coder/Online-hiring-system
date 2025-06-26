@@ -71,94 +71,21 @@ function createJobCard(title, address, salary, worktype, department, content){
     card.appendChild(title_ele);
     card.appendChild(address_ele);
     card.appendChild(list);
+    card.classList.add("jobCard");
     return card;
 }
-
-/**
-function createJobDiv(title="Title",department="Department", worktype="Worktype",content="Content", salary="Salary") {
-    let div = document.createElement("div");
-    let title_div = document.createElement("div");
-    let department_div = document.createElement("div");
-    let worktype_div = document.createElement("div");
-    let content_div = document.createElement("div");
-    let salary_div = document.createElement("div")
-    title_div.textContent = title;
-    department_div.textContent = department;
-    worktype_div.textContent = worktype;
-    content_div.textContent = content;
-    salary_div.textContent = salary;
-    div.appendChild(title_div);
-    div.appendChild(department_div);
-    div.appendChild(worktype_div);
-    div.appendChild(content_div);
-    div.appendChild(salary_div);
-    div.classList.add("jobPostContainer")
-    div.addEventListener("click", ()=>{form.style.display="flex";})
-    let children = div.children;
-    for (let child of children) {
-	child.classList.add("jobPost")
-    };
-    return div;
-};
-**/
 
 let query = () => {
     while (jobList.hasChildNodes()){
 	jobList.removeChild(jobList.firstChild)
     };
-    let worktype = worktype_field.value;
-    let department = department_field.value;
-    let salary = salary_field.value;
-    filtered_data = data.filter(jobpost => {
-	jobpost.worktype == worktype;
-	jobpost.department == department;
-	parseInt(jobpost.salary.slice(0,-1)) >= parseInt(salary);
-	
-    })
+    let filtered_data = data.filter(jobpost => (jobpost.department == department_field.value || department_field.value == "All") && (parseInt(jobpost.salary.slice(0,-1)) > parseInt(salary_field.value) || salary_field.value == "All") && (jobpost.worktype == worktype_field.value || worktype_field.value == "All") )
     console.log(filtered_data);
     for (let i=0; i<filtered_data.length;i++){
 	let jobpost = filtered_data[i];
 	jobList.appendChild(createJobCard(jobpost.title, jobpost.address, jobpost.salary, jobpost.worktype, jobpost.department, jobpost.content));
     }
 }
-
-/** let query = () => {
-    while (jobList.hasChildNodes()){
-	jobList.removeChild(jobList.firstChild)}; 
-    let worktype = worktype_field.value;
-    let department = department_field.value;
-    jobList.appendChild(createJobDiv());
-    if (worktype==="All" || department==="All"){
-	if (worktype==="All" && department==="All"){
-	    for (let i=0; i<data.length; i++){
-		let jobpost = data[i];
-		jobList.appendChild(createJobDiv(jobpost.title, jobpost.department, jobpost.worktype, jobpost.content, jobpost.salary));	
-	    } 
-	}else if (worktype==="All"){
-	    for (let i=0; i<data.length; i++){
-		let jobpost = data[i];
-		if (jobpost.department === department) {
-		jobList.appendChild(createJobDiv(jobpost.title, jobpost.department, jobpost.worktype, jobpost.content, jobpost.salary));
-		};
-	    };
-	} else { 
-	    for (let i=0; i<data.length; i++){
-		let jobpost = data[i];
-		if (jobpost.worktype === worktype) {
-		jobList.appendChild(createJobDiv(jobpost.title, jobpost.department, jobpost.worktype, jobpost.content, jobpost.salary));
-		};
-	    };
-	}
-    } else {
-	for (let i=0; i<data.length; i++){
-	    let jobpost = data[i];
-	    if (jobpost.worktype === worktype && jobpost.department === department) {
-	    jobList.appendChild(createJobDiv(jobpost.title, jobpost.department, jobpost.worktype, jobpost.content, jobpost.salary));
-	    };
-	};
-    };
-};
-**/
 form.style.display="none";
 
 async function postData(){
