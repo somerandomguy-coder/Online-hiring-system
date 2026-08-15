@@ -1,5 +1,5 @@
 # Online-hiring-system
-> Powered by the love to my wife
+> Powered by the love to my ex-girlfriend
 
 ### Official name: __Wife Feeder__
 
